@@ -7,6 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js'
   },
+  mode: 'development',
   module: {
     rules: [
       {
@@ -30,6 +31,9 @@ module.exports = {
   devServer: {
     open: true,
     host: '0.0.0.0'
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new HtmlWebPackPlugin({
