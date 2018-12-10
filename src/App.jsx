@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ObjectSettingsPanel from './components/ObjectSettingsPanel';
 import ThreeApp from './threeApp/ThreeApp';
+import { version } from '../package.json';
 
 export default class App extends Component {
 
@@ -15,7 +16,7 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <h1>Three.js primitives creator</h1><span>v 0.0.1</span>
+        <h1>Three.js primitives creator</h1><span>v{version}</span>
         <div id="rootThreeApp" />
         <ObjectSettingsPanel />
       </>
