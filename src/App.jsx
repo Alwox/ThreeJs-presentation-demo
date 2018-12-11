@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import Header from './components/Header';
 import ObjectSettingsPanel from './components/ObjectSettingsPanel';
 import ThreeApp from './threeApp/ThreeApp';
-import { version } from '../package.json';
+import GlobalStyles from './globalStyles';
+import Flex from './styledComponents/Flex';
+import Block from './styledComponents/Block';
 
 export default class App extends Component {
 
@@ -16,9 +19,15 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <h1>Three.js primitives creator</h1><span>v{version}</span>
-        <div id="rootThreeApp" />
-        <ObjectSettingsPanel />
+        <GlobalStyles />
+        <Header />
+        <Flex>
+          <Block
+            id="rootThreeApp"
+            marginRight={1}
+          />
+          <ObjectSettingsPanel />
+        </Flex>
       </>
     );
   }
