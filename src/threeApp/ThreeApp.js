@@ -4,6 +4,7 @@ import mainThreeAppLoop from './mainThreeAppLoop';
 
 export default {
   state: {
+    mobileRotation: false,
     mobileRotationValues: {
       alpha: 0,
       beta: 0,
