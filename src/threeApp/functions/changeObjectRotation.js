@@ -1,4 +1,4 @@
-import {convertDegreesToRadians} from '../helpers';
+import { convertDegreesToRadians } from '../helpers';
 
 export default (object, rotationValues) => {
   object.rotation.y = -convertDegreesToRadians(rotationValues.gamma);

@@ -4,9 +4,9 @@ import Block from './Block';
 
 const Flex = styled(Block)`
   display: flex;
-  justify-content: ${({justifyContent}) => justifyContent};
-  align-content: ${({alignContent}) => alignContent};
-  align-items: ${({alignItems}) => alignItems};
+  justify-content: ${({ justifyContent }) => justifyContent};
+  align-content: ${({ alignContent }) => alignContent};
+  align-items: ${({ alignItems }) => alignItems};
 `;
 
 Flex.propTypes = {

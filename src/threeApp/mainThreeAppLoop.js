@@ -7,4 +7,4 @@ export default (objects, state) => {
   } else {
     changeObjectRotation(objects.cube, state.mobileRotationValues);
   }
-}
+};
