@@ -3,28 +3,39 @@ import PropTypes from 'prop-types';
 import ThreeApp from '../threeApp/ThreeApp';
 import Flex from '../styledComponents/Flex';
 import Block from '../styledComponents/Block';
+import Panel from '../styledComponents/Panel';
+import Text from '../styledComponents/Text';
 
 class ObjectSettingsPanel extends Component {
   render() {
     const {} = this.props;
     return (
       <Flex column>
-        <Block>
-          <input
-            type="checkbox"
-            value={ThreeApp.state.autoRotate}
-            onChange={() => ThreeApp.setState({ autoRotate: !ThreeApp.state.autoRotate })}
-          />
-          <span>auto rotate</span>
-        </Block>
-        <Block>
-          <input
-            type="checkbox"
-            value={ThreeApp.state.mobileRotation}
-            onChange={() => ThreeApp.setState({ mobileRotation: !ThreeApp.state.mobileRotation })}
-          />
-          <span>use device orientation (works only on mobile)</span>
-        </Block>
+        <Panel
+          column
+          marginBottom={2}
+        >
+          <Text>Display</Text>
+          <Block>
+            <input
+              type="checkbox"
+              value={ThreeApp.state.autoRotate}
+              onChange={() => ThreeApp.setState({ autoRotate: !ThreeApp.state.autoRotate })}
+            />
+            <Text>auto rotate</Text>
+          </Block>
+          <Block>
+            <input
+              type="checkbox"
+              value={ThreeApp.state.mobileRotation}
+              onChange={() => ThreeApp.setState({ mobileRotation: !ThreeApp.state.mobileRotation })}
+            />
+            <Text>use device orientation (works only on mobile)</Text>
+          </Block>
+        </Panel>
+        <Panel column>
+          <Text>Object orientation</Text>
+        </Panel>
       </Flex>
     );
   }
