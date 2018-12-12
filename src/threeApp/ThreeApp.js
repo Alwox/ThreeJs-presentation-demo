@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import Cube from './components/Cube';
 import mainThreeAppLoop from './mainThreeAppLoop';
+import { convertDegreesToRadians } from './helpers';
 
 export default {
   state: {
@@ -13,9 +14,7 @@ export default {
     autoRotate: false,
   },
 
-  objects: {
-    cube: Cube(),
-  },
+  objects: {},
 
   init() {
     this.scene = new THREE.Scene();
@@ -31,7 +30,9 @@ export default {
 
     this.addEventListeners();
 
-    this.scene.add(this.objects.cube);
+    this.objects.cube = new Cube();
+
+    this.scene.add(this.objects.cube.threeObject);
 
     const render = () => {
       requestAnimationFrame(render);
