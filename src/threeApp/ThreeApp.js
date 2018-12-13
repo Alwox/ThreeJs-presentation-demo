@@ -1,7 +1,6 @@
 import * as THREE from 'three';
 import Cube from './components/Cube';
 import mainThreeAppLoop from './mainThreeAppLoop';
-import { convertDegreesToRadians } from './helpers';
 
 export default {
   state: {
