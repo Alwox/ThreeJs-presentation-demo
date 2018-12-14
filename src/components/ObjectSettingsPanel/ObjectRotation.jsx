@@ -6,7 +6,7 @@ import ThreeApp from '../../threeApp/ThreeApp';
 
 class ObjectRotation extends Component {
   changeRotation = (event) => {
-    ThreeApp.objects.cube.changeRotation(event.target.name, parseInt(event.target.value));
+    ThreeApp.objects.cube.changeRotation(event.target.name, parseInt(event.target.value, 10));
   };
 
   render() {

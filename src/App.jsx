@@ -7,13 +7,12 @@ import Flex from './styledComponents/Flex';
 import Block from './styledComponents/Block';
 
 export default class App extends Component {
-
   componentDidMount() {
     ThreeApp.init();
   }
 
   shouldComponentUpdate() {
-    return false
+    return false;
   }
 
   render() {

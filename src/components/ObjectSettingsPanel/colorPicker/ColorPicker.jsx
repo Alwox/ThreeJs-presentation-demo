@@ -13,9 +13,11 @@ class ColorPicker extends Component {
   };
 
   changeOpened = (picker) => {
-    this.setState(prevState => {
-      return prevState.openedPicker === picker ? {openedPicker: false} : {openedPicker: picker}
-    })
+    this.setState(
+      prevState => (
+        prevState.openedPicker === picker ? { openedPicker: false } : { openedPicker: picker }
+      ),
+    );
   };
 
   render() {
@@ -36,7 +38,9 @@ class ColorPicker extends Component {
             {openedPicker === 'object' && (
               <SketchPicker
                 color={ThreeApp.objects.cube && ThreeApp.objects.cube.threeObject.material.color}
-                onChange={color => ThreeApp.objects.cube && ThreeApp.objects.cube.changeColor(color.hex)}
+                onChange={
+                  color => ThreeApp.objects.cube && ThreeApp.objects.cube.changeColor(color.hex)
+                }
                 disableAlpha
               />
             )}
@@ -57,7 +61,7 @@ class ColorPicker extends Component {
           </Block>
         </Flex>
       </Panel>
-    )
+    );
   }
 }
 
