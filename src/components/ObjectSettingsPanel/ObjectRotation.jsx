@@ -11,7 +11,7 @@ class ObjectRotation extends Component {
 
   render() {
     return (
-      <Panel column>
+      <Panel column marginBottom={2}>
         <Text>Object orientation</Text>
         <Block
           marginBottom={1}
