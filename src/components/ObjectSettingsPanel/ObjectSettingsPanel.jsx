@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ThreeApp from '../threeApp/ThreeApp';
-import Flex from '../styledComponents/Flex';
-import Block from '../styledComponents/Block';
-import Panel from '../styledComponents/Panel';
-import Text from '../styledComponents/Text';
+import ThreeApp from '../../threeApp/ThreeApp';
+import Flex from '../../styledComponents/Flex';
+import Block from '../../styledComponents/Block';
+import Panel from '../../styledComponents/Panel';
+import Text from '../../styledComponents/Text';
 import ObjectRotation from './ObjectRotation';
+import ColorPicker from './colorPicker/ColorPicker';
 
 class ObjectSettingsPanel extends Component {
   render() {
@@ -34,6 +35,7 @@ class ObjectSettingsPanel extends Component {
           </Block>
         </Panel>
         <ObjectRotation />
+        <ColorPicker />
       </Flex>
     );
   }

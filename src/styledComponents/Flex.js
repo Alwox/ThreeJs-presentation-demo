@@ -4,7 +4,7 @@ import Block from './Block';
 
 const Flex = styled(Block)`
   display: flex;
-  flex-direction: ${({column}) => column && 'column'};
+  flex-direction: ${({ column }) => column && 'column'};
   justify-content: ${({ justifyContent }) => justifyContent};
   align-content: ${({ alignContent }) => alignContent};
   align-items: ${({ alignItems }) => alignItems};

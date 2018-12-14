@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
-import ObjectSettingsPanel from './components/ObjectSettingsPanel';
+import ObjectSettingsPanel from './components/ObjectSettingsPanel/ObjectSettingsPanel';
 import ThreeApp from './threeApp/ThreeApp';
 import GlobalStyles from './globalStyles';
 import Flex from './styledComponents/Flex';

@@ -8,5 +8,9 @@ export default function () {
 
   this.changeRotation = function (axis, value) {
     this.threeObject.rotation[axis] = convertDegreesToRadians(value);
-  }
+  };
+
+  this.changeColor = function (color) {
+    this.threeObject.material.color = new THREE.Color(color);
+  };
 };

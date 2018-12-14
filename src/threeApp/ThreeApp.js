@@ -44,6 +44,10 @@ export default {
     render();
   },
 
+  changeSceneColor(color) {
+    this.scene.background = new THREE.Color(color);
+  },
+
   setState(changedValues) {
     this.state = {
       ...this.state,

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Block from '../styledComponents/Block';
-import Panel from '../styledComponents/Panel';
-import Text from '../styledComponents/Text';
-import ThreeApp from '../threeApp/ThreeApp';
+import Block from '../../styledComponents/Block';
+import Panel from '../../styledComponents/Panel';
+import Text from '../../styledComponents/Text';
+import ThreeApp from '../../threeApp/ThreeApp';
 
 class ObjectRotation extends Component {
   changeRotation = (event) => {
