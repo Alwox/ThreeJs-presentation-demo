@@ -13,9 +13,7 @@ export default {
     autoRotate: false,
   },
 
-  objects: {},
-
-  init() {
+  init(isLoadedCallback) {
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color('#a2fdff');
 
@@ -29,9 +27,7 @@ export default {
 
     this.addEventListeners();
 
-    this.objects.cube = new Cube();
-
-    this.scene.add(this.objects.cube.threeObject);
+    this.createObjects();
 
     const render = () => {
       requestAnimationFrame(render);
@@ -42,6 +38,16 @@ export default {
     };
 
     render();
+    isLoadedCallback();
+
+  },
+
+  createObjects() {
+    this.objects = {
+      cube: new Cube(),
+    };
+
+    this.scene.add(this.objects.cube.threeObject);
   },
 
   changeSceneColor(color) {

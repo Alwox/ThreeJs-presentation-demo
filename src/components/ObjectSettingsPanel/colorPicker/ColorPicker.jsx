@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import get from 'lodash/get';
 import { SketchPicker } from 'react-color';
 import Block from '../../../styledComponents/Block';
 import Flex from '../../../styledComponents/Flex';
 import Panel from '../../../styledComponents/Panel';
 import Text from '../../../styledComponents/Text';
-import ThreeApp from '../../../threeApp/ThreeApp';
 import ColorPreview from './styling/ColorPreview';
 
 class ColorPicker extends Component {
@@ -22,6 +22,7 @@ class ColorPicker extends Component {
 
   render() {
     const { openedPicker } = this.state;
+    const { threeApp } = this.props;
 
     return (
       <Panel>
@@ -32,14 +33,14 @@ class ColorPicker extends Component {
           <Block>
             <Text>Object color</Text>
             <ColorPreview
-              color={ThreeApp.scene && ThreeApp.scene.background}
+              color={get(threeApp, 'objects.cube.threeObject.material.color')}
               onClick={() => this.changeOpened('object')}
             />
             {openedPicker === 'object' && (
               <SketchPicker
-                color={ThreeApp.objects.cube && ThreeApp.objects.cube.threeObject.material.color}
+                color={get(threeApp, 'objects.cube.threeObject.material.color')}
                 onChange={
-                  color => ThreeApp.objects.cube && ThreeApp.objects.cube.changeColor(color.hex)
+                  color => threeApp.objects.cube.changeColor(color.hex)
                 }
                 disableAlpha
               />
@@ -48,13 +49,13 @@ class ColorPicker extends Component {
           <Block>
             <Text>Background color</Text>
             <ColorPreview
-              color={ThreeApp.objects.cube && ThreeApp.objects.cube.threeObject.material.color}
+              color={get(threeApp, 'scene.background')}
               onClick={() => this.changeOpened('background')}
             />
             {openedPicker === 'background' && (
               <SketchPicker
-                color={ThreeApp.objects.cube && ThreeApp.objects.cube.threeObject.material.color}
-                onChange={color => ThreeApp.changeSceneColor(color.hex)}
+                color={get(threeApp, 'scene.background')}
+                onChange={color => threeApp.changeSceneColor(color.hex)}
                 disableAlpha
               />
             )}

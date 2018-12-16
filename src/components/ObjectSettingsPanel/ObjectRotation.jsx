@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
+import get from 'lodash/get';
 import Block from '../../styledComponents/Block';
 import Panel from '../../styledComponents/Panel';
 import Text from '../../styledComponents/Text';
-import ThreeApp from '../../threeApp/ThreeApp';
+import { convertRadiansToDegrees } from '../../threeApp/helpers';
 
 class ObjectRotation extends Component {
   changeRotation = (event) => {
-    ThreeApp.objects.cube.changeRotation(event.target.name, parseInt(event.target.value, 10));
+    this.props.threeApp.objects.cube.changeRotation(
+      event.target.name, parseInt(event.target.value, 10),
+    );
   };
 
   render() {
+    const { threeApp } = this.props;
+
     return (
       <Panel column marginBottom={2}>
         <Text>Object orientation</Text>
@@ -22,7 +27,7 @@ class ObjectRotation extends Component {
             name="x"
             min={0}
             max={360}
-            value={ThreeApp.objects.cube && ThreeApp.objects.cube.threeObject.rotation.x}
+            defaultValue={convertRadiansToDegrees(get(threeApp, 'objects.cube.threeObject.rotation.x', 0))}
             onChange={this.changeRotation}
           />
         </Block>
@@ -35,7 +40,7 @@ class ObjectRotation extends Component {
             name="y"
             min={0}
             max={360}
-            value={ThreeApp.objects.cube && ThreeApp.objects.cube.threeObject.rotation.y}
+            defaultValue={convertRadiansToDegrees(get(threeApp, 'objects.cube.threeObject.rotation.y', 0))}
             onChange={this.changeRotation}
           />
         </Block>
@@ -48,7 +53,7 @@ class ObjectRotation extends Component {
             name="z"
             min={0}
             max={360}
-            value={ThreeApp.objects.cube && ThreeApp.objects.cube.threeObject.rotation.z}
+            defaultValue={convertRadiansToDegrees(get(threeApp, 'objects.cube.threeObject.rotation.z', 0))}
             onChange={this.changeRotation}
           />
         </Block>

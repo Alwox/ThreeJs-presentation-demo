@@ -5,7 +5,7 @@ const ColorPreview = styled.div`
   width: 30px;
   height: 30px;
   border-radius: ${borderRadius};
-  background-color: ${({ color }) => color};
+  background-color: ${({ color }) => `rgb(${color.r * 255}, ${color.g * 255}, ${color.b * 255})`};
   cursor: pointer;
   border: 1px solid gray;
 `;

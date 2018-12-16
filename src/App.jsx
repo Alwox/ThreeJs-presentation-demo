@@ -7,15 +7,22 @@ import Flex from './styledComponents/Flex';
 import Block from './styledComponents/Block';
 
 export default class App extends Component {
+  state = {
+    threeAppLoaded: false,
+  };
+
   componentDidMount() {
-    ThreeApp.init();
+    ThreeApp.init(this.threeAppIsLoaded);
   }
 
-  shouldComponentUpdate() {
-    return false;
-  }
+  threeAppIsLoaded = () => {
+    this.setState({
+      threeAppLoaded: true,
+    });
+  };
 
   render() {
+    const { threeAppLoaded } = this.state;
     return (
       <>
         <GlobalStyles />
@@ -25,7 +32,11 @@ export default class App extends Component {
             id="rootThreeApp"
             marginRight={1}
           />
-          <ObjectSettingsPanel />
+          {threeAppLoaded && (
+            <ObjectSettingsPanel
+              threeApp={ThreeApp}
+            />
+          )}
         </Flex>
       </>
     );
