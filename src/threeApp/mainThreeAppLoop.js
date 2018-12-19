@@ -2,9 +2,12 @@ import changeObjectRotation from './functions/changeObjectRotation';
 
 export default (objects, state) => {
   if (state.autoRotate) {
-    objects.cube.rotation.x = objects.cube.rotation.x + 0.01;
-    objects.cube.rotation.y = objects.cube.rotation.y + 0.01;
-  } else {
-    changeObjectRotation(objects.cube, state.mobileRotationValues);
+    objects.cube.threeObject.rotation.x = objects.cube.threeObject.rotation.x + 0.01;
+    objects.cube.threeObject.rotation.y = objects.cube.threeObject.rotation.y + 0.01;
+    objects.cube.threeObject.rotation.z = objects.cube.threeObject.rotation.z + 0.01;
+  }
+
+  if (state.mobileRotation) {
+    changeObjectRotation(objects.cube.threeObject, state.mobileRotationValues);
   }
 };

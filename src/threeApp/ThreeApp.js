@@ -4,6 +4,7 @@ import mainThreeAppLoop from './mainThreeAppLoop';
 
 export default {
   state: {
+    mobileRotation: false,
     mobileRotationValues: {
       alpha: 0,
       beta: 0,
@@ -12,14 +13,12 @@ export default {
     autoRotate: false,
   },
 
-  objects: {
-    cube: Cube(),
-  },
-
-  init() {
+  init(isLoadedCallback) {
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color('#a2fdff');
-
+    const light = new THREE.DirectionalLight( 0xFFFFFF, 2.0 );
+    light.position.set(0, 1, 1);
+    this.scene.add(light);
     const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
     camera.position.z = 2;
 
@@ -30,7 +29,7 @@ export default {
 
     this.addEventListeners();
 
-    this.scene.add(this.objects.cube);
+    this.createObjects();
 
     const render = () => {
       requestAnimationFrame(render);
@@ -41,6 +40,20 @@ export default {
     };
 
     render();
+    isLoadedCallback();
+
+  },
+
+  createObjects() {
+    this.objects = {
+      cube: new Cube(),
+    };
+
+    this.scene.add(this.objects.cube.threeObject);
+  },
+
+  changeSceneColor(color) {
+    this.scene.background = new THREE.Color(color);
   },
 
   setState(changedValues) {

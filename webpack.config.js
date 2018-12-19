@@ -1,11 +1,11 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  entry: { main: './index.js' },
+  entry: { main: './index.jsx' },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js'
+    filename: 'main.js',
   },
   mode: 'development',
   module: {
@@ -13,31 +13,30 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        }
+        use: ['babel-loader', 'eslint-loader'],
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader",
-            options: { minimize: true }
-          }
-        ]
-      }
-    ]
+            loader: 'html-loader',
+            options: { minimize: true },
+          },
+        ],
+      },
+    ],
   },
+  devtool: 'inline-source-map',
   devServer: {
     open: true,
-    host: '0.0.0.0'
+    host: '0.0.0.0',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: './index.html'
-    })
-  ]
+      template: './index.html',
+    }),
+  ],
 };
