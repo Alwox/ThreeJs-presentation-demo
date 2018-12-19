@@ -1,5 +1,4 @@
 import React from 'react';
-import { version } from '../../package.json';
 import Text from '../styledComponents/Text';
 import Flex from '../styledComponents/Flex';
 
@@ -9,11 +8,7 @@ const Header = () => (
     justifyContent="center"
     alignItems="flex-end"
   >
-    <Text big>Three.js primitives creator</Text>
-    <Text>
-      v
-      {version}
-    </Text>
+    <Text big>Three.js demo</Text>
   </Flex>
 );
 
