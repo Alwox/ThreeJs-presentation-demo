@@ -3,7 +3,7 @@ import { convertDegreesToRadians } from '../helpers';
 
 export default function () {
   const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const material = new THREE.MeshBasicMaterial({ color: '#24617e' });
+  const material = new THREE.MeshLambertMaterial({ color: '#24617e' });
   this.threeObject = new THREE.Mesh(geometry, material);
 
   this.changeRotation = function (axis, value) {

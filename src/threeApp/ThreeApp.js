@@ -16,7 +16,9 @@ export default {
   init(isLoadedCallback) {
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color('#a2fdff');
-
+    const light = new THREE.DirectionalLight( 0xFFFFFF, 2.0 );
+    light.position.set(0, 1, 1);
+    this.scene.add(light);
     const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
     camera.position.z = 2;
 
