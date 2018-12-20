@@ -19,11 +19,11 @@ export default {
     const light = new THREE.DirectionalLight( 0xFFFFFF, 2.0 );
     light.position.set(0, 1, 1);
     this.scene.add(light);
-    const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 600, 0.1, 1000);
     camera.position.z = 2;
 
     const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(600, 600);
+    renderer.setSize(window.innerWidth, 600);
 
     document.getElementById('rootThreeApp').appendChild(renderer.domElement);
 

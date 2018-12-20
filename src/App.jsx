@@ -3,7 +3,6 @@ import Header from './components/Header';
 import ObjectSettingsPanel from './components/ObjectSettingsPanel/ObjectSettingsPanel';
 import ThreeApp from './threeApp/ThreeApp';
 import GlobalStyles from './globalStyles';
-import Flex from './styledComponents/Flex';
 import Block from './styledComponents/Block';
 
 export default class App extends Component {
@@ -26,18 +25,15 @@ export default class App extends Component {
     return (
       <>
         <GlobalStyles />
-        <Header />
-        <Flex>
-          <Block
-            id="rootThreeApp"
-            marginRight={1}
+        <Block
+          id="rootThreeApp"
+          marginRight={1}
+        />
+        {threeAppLoaded && (
+          <ObjectSettingsPanel
+            threeApp={ThreeApp}
           />
-          {threeAppLoaded && (
-            <ObjectSettingsPanel
-              threeApp={ThreeApp}
-            />
-          )}
-        </Flex>
+        )}
       </>
     );
   }

@@ -16,7 +16,10 @@ class ObjectRotation extends Component {
     const { threeApp } = this.props;
 
     return (
-      <Panel column marginBottom={2}>
+      <Panel
+        column
+        marginRight={2}
+      >
         <Text>Object orientation</Text>
         <Block
           marginBottom={1}
