@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import get from 'lodash/get';
 import { SketchPicker } from 'react-color';
 import Block from '../../../styledComponents/Block';
 import Panel from '../../../styledComponents/Panel';
@@ -37,14 +36,14 @@ class ColorPicker extends Component {
         <Block marginBottom>
           <Text>Object color</Text>
           <ColorPreview
-            color={get(threeApp, 'objects.cube.threeObject.material.color')}
+            color={threeApp.objects.cube.threeObject.material.color}
             onClick={() => this.changeOpened('object')}
           />
           {openedPicker === 'object' && (
             <>
               <SketchPickerContainer>
                 <SketchPicker
-                  color={get(threeApp, 'objects.cube.threeObject.material.color')}
+                  color={threeApp.objects.cube.threeObject.material.color}
                   onChange={
                     color => threeApp.objects.cube.changeColor(color.hex)
                   }
@@ -60,14 +59,14 @@ class ColorPicker extends Component {
         <Block>
           <Text>Background color</Text>
           <ColorPreview
-            color={get(threeApp, 'scene.background')}
+            color={threeApp.scene.background}
             onClick={() => this.changeOpened('background')}
           />
           {openedPicker === 'background' && (
             <>
               <SketchPickerContainer>
                 <SketchPicker
-                  color={get(threeApp, 'scene.background')}
+                  color={threeApp.scene.background}
                   onChange={color => threeApp.changeSceneColor(color.hex)}
                   disableAlpha
                 />

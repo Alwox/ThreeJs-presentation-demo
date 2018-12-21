@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import get from 'lodash/get';
 import Block from '../../../styledComponents/Block';
 import Flex from '../../../styledComponents/Flex';
 import Panel from '../../../styledComponents/Panel';
@@ -36,7 +35,7 @@ class ObjectRotation extends Component {
             name="x"
             min={0}
             max={360}
-            defaultValue={convertRadiansToDegrees(get(threeApp, 'objects.cube.threeObject.rotation.x', 0))}
+            defaultValue={convertRadiansToDegrees(threeApp.objects.cube.threeObject.rotation.x)}
             onChange={this.changeRotation}
           />
         </Flex>
@@ -51,7 +50,7 @@ class ObjectRotation extends Component {
             name="y"
             min={0}
             max={360}
-            defaultValue={convertRadiansToDegrees(get(threeApp, 'objects.cube.threeObject.rotation.y', 0))}
+            defaultValue={convertRadiansToDegrees(threeApp.objects.cube.threeObject.rotation.y)}
             onChange={this.changeRotation}
           />
         </Flex>
@@ -66,7 +65,7 @@ class ObjectRotation extends Component {
             name="z"
             min={0}
             max={360}
-            defaultValue={convertRadiansToDegrees(get(threeApp, 'objects.cube.threeObject.rotation.z', 0))}
+            defaultValue={convertRadiansToDegrees(threeApp.objects.cube.threeObject.rotation.z)}
             onChange={this.changeRotation}
           />
         </Flex>
@@ -74,7 +73,7 @@ class ObjectRotation extends Component {
           <Block marginRight>
             <input
               type="checkbox"
-              value={get(threeApp, 'state.autoRotate', false)}
+              value={threeApp.state.autoRotate}
               onChange={() => threeApp.setState({ autoRotate: !threeApp.state.autoRotate })}
             />
           </Block>
@@ -84,7 +83,7 @@ class ObjectRotation extends Component {
           <Block marginRight>
             <input
               type="checkbox"
-              value={get(threeApp, 'state.mobileRotation', false)}
+              value={threeApp.state.mobileRotation}
               onChange={() => threeApp.setState({ mobileRotation: !threeApp.state.mobileRotation })}
             />
           </Block>
