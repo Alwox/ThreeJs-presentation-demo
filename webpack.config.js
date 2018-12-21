@@ -1,6 +1,7 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: { main: './index.jsx' },
@@ -34,6 +35,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
+  },
+  optimization: {
+    minimizer: [new UglifyJsPlugin()],
   },
   plugins: [
     new HtmlWebPackPlugin({
