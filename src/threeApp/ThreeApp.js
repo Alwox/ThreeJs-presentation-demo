@@ -25,11 +25,11 @@ export default {
     const light = new DirectionalLight( 0xFFFFFF, 2.0 );
     light.position.set(0, 1, 1);
     this.scene.add(light);
-    const camera = new PerspectiveCamera(75, window.innerWidth / 600, 0.1, 1000);
+    const camera = new PerspectiveCamera(75, window.innerWidth / 400, 0.1, 1000);
     camera.position.z = 2;
 
     const renderer = new WebGLRenderer();
-    renderer.setSize(window.innerWidth, 600);
+    renderer.setSize(window.innerWidth, 400);
 
     document.getElementById('rootThreeApp').appendChild(renderer.domElement);
 
