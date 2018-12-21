@@ -6,6 +6,8 @@ import Block from '../../../styledComponents/Block';
 import Panel from '../../../styledComponents/Panel';
 import Text from '../../../styledComponents/Text';
 import ColorPreview from './styling/ColorPreview';
+import SketchPickerContainer from './styling/SketchPickerContainer';
+import SketchPickerClosingBg from './styling/SketchPickerClosingBg';
 
 class ColorPicker extends Component {
   state = {
@@ -39,13 +41,20 @@ class ColorPicker extends Component {
             onClick={() => this.changeOpened('object')}
           />
           {openedPicker === 'object' && (
-            <SketchPicker
-              color={get(threeApp, 'objects.cube.threeObject.material.color')}
-              onChange={
-                color => threeApp.objects.cube.changeColor(color.hex)
-              }
-              disableAlpha
-            />
+            <>
+              <SketchPickerContainer>
+                <SketchPicker
+                  color={get(threeApp, 'objects.cube.threeObject.material.color')}
+                  onChange={
+                    color => threeApp.objects.cube.changeColor(color.hex)
+                  }
+                  disableAlpha
+                />
+              </SketchPickerContainer>
+              <SketchPickerClosingBg
+                onClick={() => this.changeOpened('object')}
+              />
+            </>
           )}
         </Block>
         <Block>
@@ -55,11 +64,18 @@ class ColorPicker extends Component {
             onClick={() => this.changeOpened('background')}
           />
           {openedPicker === 'background' && (
-            <SketchPicker
-              color={get(threeApp, 'scene.background')}
-              onChange={color => threeApp.changeSceneColor(color.hex)}
-              disableAlpha
-            />
+            <>
+              <SketchPickerContainer>
+                <SketchPicker
+                  color={get(threeApp, 'scene.background')}
+                  onChange={color => threeApp.changeSceneColor(color.hex)}
+                  disableAlpha
+                />
+              </SketchPickerContainer>
+              <SketchPickerClosingBg
+                onClick={() => this.changeOpened('background')}
+              />
+            </>
           )}
         </Block>
       </Panel>
