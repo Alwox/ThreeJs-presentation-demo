@@ -1,4 +1,10 @@
-import * as THREE from 'three';
+import {
+  Scene,
+  PerspectiveCamera,
+  DirectionalLight,
+  Color,
+  WebGLRenderer,
+} from 'three';
 import Cube from './components/Cube';
 import mainThreeAppLoop from './mainThreeAppLoop';
 
@@ -14,15 +20,15 @@ export default {
   },
 
   init(isLoadedCallback) {
-    this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color('#a2fdff');
-    const light = new THREE.DirectionalLight( 0xFFFFFF, 2.0 );
+    this.scene = new Scene();
+    this.scene.background = new Color('#a2fdff');
+    const light = new DirectionalLight( 0xFFFFFF, 2.0 );
     light.position.set(0, 1, 1);
     this.scene.add(light);
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 600, 0.1, 1000);
+    const camera = new PerspectiveCamera(75, window.innerWidth / 600, 0.1, 1000);
     camera.position.z = 2;
 
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = new WebGLRenderer();
     renderer.setSize(window.innerWidth, 600);
 
     document.getElementById('rootThreeApp').appendChild(renderer.domElement);
@@ -53,7 +59,7 @@ export default {
   },
 
   changeSceneColor(color) {
-    this.scene.background = new THREE.Color(color);
+    this.scene.background = new Color(color);
   },
 
   setState(changedValues) {

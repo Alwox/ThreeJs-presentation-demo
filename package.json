@@ -3,9 +3,10 @@
   "version": "0.0.3",
   "description": "",
   "main": "index.jsx",
+  "sideEffects": false,
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack",
+    "build": "rimraf dist && webpack",
     "lint": "./node_modules/.bin/eslint ./src --fix"
   },
   "author": "",
