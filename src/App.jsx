@@ -26,7 +26,6 @@ export default class App extends Component {
         <GlobalStyles />
         <Block
           id="rootThreeApp"
-          marginRight={1}
         />
         {threeAppLoaded && (
           <ObjectSettingsPanel

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import get from 'lodash/get';
 import { SketchPicker } from 'react-color';
@@ -28,10 +29,10 @@ class ColorPicker extends Component {
         marginRight={2}
         column
       >
-        <Block>
-          <Text>Colors</Text>
+        <Block marginBottom>
+          <Text big>Colors</Text>
         </Block>
-        <Block>
+        <Block marginBottom>
           <Text>Object color</Text>
           <ColorPreview
             color={get(threeApp, 'objects.cube.threeObject.material.color')}
@@ -65,5 +66,9 @@ class ColorPicker extends Component {
     );
   }
 }
+
+ColorPicker.propTypes = {
+  threeApp: PropTypes.object.isRequired,
+};
 
 export default ColorPicker;
