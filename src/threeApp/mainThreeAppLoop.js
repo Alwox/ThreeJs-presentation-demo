@@ -1,13 +1,14 @@
-import changeObjectRotation from './functions/changeObjectRotation';
-
 export default (objects, state) => {
+  const CubeObject = objects.cube;
   if (state.autoRotate) {
-    objects.cube.threeObject.rotation.x = objects.cube.threeObject.rotation.x + 0.01;
-    objects.cube.threeObject.rotation.y = objects.cube.threeObject.rotation.y + 0.01;
-    objects.cube.threeObject.rotation.z = objects.cube.threeObject.rotation.z + 0.01;
+    CubeObject.changeRotation('x', CubeObject.getRotation('x') + 0.5);
+    CubeObject.changeRotation('y', CubeObject.getRotation('y') + 0.5);
+    CubeObject.changeRotation('z', CubeObject.getRotation('z') + 0.5);
   }
 
   if (state.mobileRotation) {
-    changeObjectRotation(objects.cube.threeObject, state.mobileRotationValues);
+    CubeObject.changeRotation('x', -state.mobileRotationValues.beta);
+    CubeObject.changeRotation('y', -state.mobileRotationValues.gamma);
+    CubeObject.changeRotation('z', -state.mobileRotationValues.alpha);
   }
 };
