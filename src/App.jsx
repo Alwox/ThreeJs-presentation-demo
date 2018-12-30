@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ColorPicker from './components/colorPicker/ColorPicker';
 import ObjectRotation from './components/objectRotation/ObjectRotation';
 import Container from './styledComponents/Container';
-import { initThreeApp } from './threeApp/ThreeApp';
+import initThreeApp from './threeApp/initThreeApp';
 import GlobalStyles from './globalStyles';
 import Block from './styledComponents/Block';
 

@@ -6,7 +6,8 @@ import Text from '../../styledComponents/Text';
 import ColorPreview from './styling/ColorPreview';
 import SketchPickerContainer from './styling/SketchPickerContainer';
 import SketchPickerClosingBg from './styling/SketchPickerClosingBg';
-import { threeObjects, setSceneColor } from '../../threeApp/ThreeApp';
+import { changeSceneColor } from '../../threeApp/managers/sceneManager';
+import { threeObjects, threeScenes } from '../../threeApp/threeData';
 
 class ColorPicker extends Component {
   state = {
@@ -23,6 +24,8 @@ class ColorPicker extends Component {
 
   render() {
     const { openedPicker } = this.state;
+    const { cube } = threeObjects;
+    const { mainScene } = threeScenes;
 
     return (
       <Panel
@@ -35,16 +38,16 @@ class ColorPicker extends Component {
         <Block marginBottom>
           <Text>Object color</Text>
           <ColorPreview
-            color={threeObjects.cube.threeObject.material.color}
+            color={cube.threeObject.material.color}
             onClick={() => this.changeOpened('object')}
           />
           {openedPicker === 'object' && (
             <>
               <SketchPickerContainer>
                 <SketchPicker
-                  color={threeObjects.cube.threeObject.material.color}
+                  color={cube.threeObject.material.color}
                   onChange={
-                    color => threeObjects.cube.changeColor(color.hex)
+                    color => cube.changeColor(color.hex)
                   }
                   disableAlpha
                 />
@@ -58,15 +61,15 @@ class ColorPicker extends Component {
         <Block>
           <Text>Background color</Text>
           <ColorPreview
-            color={threeObjects.scene.background}
+            color={mainScene.background}
             onClick={() => this.changeOpened('background')}
           />
           {openedPicker === 'background' && (
             <>
               <SketchPickerContainer>
                 <SketchPicker
-                  color={threeObjects.scene.background}
-                  onChange={color => setSceneColor(threeObjects.scene, color.hex)}
+                  color={mainScene.background}
+                  onChange={color => changeSceneColor(mainScene, color.hex)}
                   disableAlpha
                 />
               </SketchPickerContainer>

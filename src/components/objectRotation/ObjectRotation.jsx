@@ -4,8 +4,7 @@ import Flex from '../../styledComponents/Flex';
 import Panel from '../../styledComponents/Panel';
 import Text from '../../styledComponents/Text';
 import { convertRadiansToDegrees } from '../../threeApp/helpers';
-import { threeObjects } from '../../threeApp/ThreeApp';
-import { threeState, setThreeState } from '../../threeApp/threeState';
+import { threeObjects, threeState, setThreeState } from '../../threeApp/threeData';
 
 class ObjectRotation extends Component {
   changeRotation = (event) => {
