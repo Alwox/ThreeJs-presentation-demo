@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Block from '../../../styledComponents/Block';
-import Flex from '../../../styledComponents/Flex';
-import Panel from '../../../styledComponents/Panel';
-import Text from '../../../styledComponents/Text';
-import { convertRadiansToDegrees } from '../../../threeApp/helpers';
+import Block from '../../styledComponents/Block';
+import Flex from '../../styledComponents/Flex';
+import Panel from '../../styledComponents/Panel';
+import Text from '../../styledComponents/Text';
+import { convertRadiansToDegrees } from '../../threeApp/helpers';
+import { threeObjects, threeState, setThreeState } from '../../threeApp/threeData';
 
 class ObjectRotation extends Component {
   changeRotation = (event) => {
-    this.props.threeApp.objects.cube.changeRotation(
+    threeObjects.cube.changeRotation(
       event.target.name, parseInt(event.target.value, 10),
     );
   };
 
   render() {
-    const { threeApp } = this.props;
-
     return (
       <Panel
         column
@@ -35,7 +33,7 @@ class ObjectRotation extends Component {
             name="x"
             min={0}
             max={360}
-            defaultValue={convertRadiansToDegrees(threeApp.objects.cube.threeObject.rotation.x)}
+            defaultValue={convertRadiansToDegrees(threeObjects.cube.threeObject.rotation.x)}
             onChange={this.changeRotation}
           />
         </Flex>
@@ -50,7 +48,7 @@ class ObjectRotation extends Component {
             name="y"
             min={0}
             max={360}
-            defaultValue={convertRadiansToDegrees(threeApp.objects.cube.threeObject.rotation.y)}
+            defaultValue={convertRadiansToDegrees(threeObjects.cube.threeObject.rotation.y)}
             onChange={this.changeRotation}
           />
         </Flex>
@@ -65,7 +63,7 @@ class ObjectRotation extends Component {
             name="z"
             min={0}
             max={360}
-            defaultValue={convertRadiansToDegrees(threeApp.objects.cube.threeObject.rotation.z)}
+            defaultValue={convertRadiansToDegrees(threeObjects.cube.threeObject.rotation.z)}
             onChange={this.changeRotation}
           />
         </Flex>
@@ -73,8 +71,8 @@ class ObjectRotation extends Component {
           <Block marginRight>
             <input
               type="checkbox"
-              value={threeApp.state.autoRotate}
-              onChange={() => threeApp.setState({ autoRotate: !threeApp.state.autoRotate })}
+              value={threeState.autoRotate}
+              onChange={() => setThreeState({ autoRotate: !threeState.autoRotate })}
             />
           </Block>
           <Text>auto rotate</Text>
@@ -83,8 +81,8 @@ class ObjectRotation extends Component {
           <Block marginRight>
             <input
               type="checkbox"
-              value={threeApp.state.mobileRotation}
-              onChange={() => threeApp.setState({ mobileRotation: !threeApp.state.mobileRotation })}
+              value={threeState.mobileRotation}
+              onChange={() => setThreeState({ mobileRotation: !threeState.mobileRotation })}
             />
           </Block>
           <Text>use device orientation (works only on mobile)</Text>
@@ -93,9 +91,5 @@ class ObjectRotation extends Component {
     );
   }
 }
-
-ObjectRotation.propTypes = {
-  threeApp: PropTypes.object.isRequired,
-};
 
 export default ObjectRotation;

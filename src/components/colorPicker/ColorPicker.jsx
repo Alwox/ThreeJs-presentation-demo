@@ -1,12 +1,13 @@
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { SketchPicker } from 'react-color';
-import Block from '../../../styledComponents/Block';
-import Panel from '../../../styledComponents/Panel';
-import Text from '../../../styledComponents/Text';
+import Block from '../../styledComponents/Block';
+import Panel from '../../styledComponents/Panel';
+import Text from '../../styledComponents/Text';
 import ColorPreview from './styling/ColorPreview';
 import SketchPickerContainer from './styling/SketchPickerContainer';
 import SketchPickerClosingBg from './styling/SketchPickerClosingBg';
+import { changeSceneColor } from '../../threeApp/managers/sceneManager';
+import { threeObjects, threeScenes } from '../../threeApp/threeData';
 
 class ColorPicker extends Component {
   state = {
@@ -23,7 +24,8 @@ class ColorPicker extends Component {
 
   render() {
     const { openedPicker } = this.state;
-    const { threeApp } = this.props;
+    const { cube } = threeObjects;
+    const { mainScene } = threeScenes;
 
     return (
       <Panel
@@ -36,16 +38,16 @@ class ColorPicker extends Component {
         <Block marginBottom>
           <Text>Object color</Text>
           <ColorPreview
-            color={threeApp.objects.cube.threeObject.material.color}
+            color={cube.threeObject.material.color}
             onClick={() => this.changeOpened('object')}
           />
           {openedPicker === 'object' && (
             <>
               <SketchPickerContainer>
                 <SketchPicker
-                  color={threeApp.objects.cube.threeObject.material.color}
+                  color={cube.threeObject.material.color}
                   onChange={
-                    color => threeApp.objects.cube.changeColor(color.hex)
+                    color => cube.changeColor(color.hex)
                   }
                   disableAlpha
                 />
@@ -59,15 +61,15 @@ class ColorPicker extends Component {
         <Block>
           <Text>Background color</Text>
           <ColorPreview
-            color={threeApp.scene.background}
+            color={mainScene.background}
             onClick={() => this.changeOpened('background')}
           />
           {openedPicker === 'background' && (
             <>
               <SketchPickerContainer>
                 <SketchPicker
-                  color={threeApp.scene.background}
-                  onChange={color => threeApp.changeSceneColor(color.hex)}
+                  color={mainScene.background}
+                  onChange={color => changeSceneColor(mainScene, color.hex)}
                   disableAlpha
                 />
               </SketchPickerContainer>
@@ -81,9 +83,5 @@ class ColorPicker extends Component {
     );
   }
 }
-
-ColorPicker.propTypes = {
-  threeApp: PropTypes.object.isRequired,
-};
 
 export default ColorPicker;
