@@ -1,7 +1,7 @@
 import Cube from './components/Cube';
 import renderLoopBody from './renderLoopBody';
-import { threeState, addScene, setThreeState } from './threeData';
-import { threeObjects, addObjectToScene } from './threeData';
+import { addScene, setThreeState } from './threeData';
+import { addObjectToScene } from './threeData';
 import { createMainScene } from './managers/sceneManager';
 import { createCamera } from './managers/cameraManager';
 import { createRenderer } from './managers/rendererManager';
@@ -20,22 +20,21 @@ export default (threeAppIsReady) => {
   const renderer = createRenderer();
   const camera = createCamera();
   const mainScene = createMainScene();
+
   addScene('mainScene', mainScene);
-
-  document.getElementById('rootThreeApp').appendChild(renderer.domElement);
-
   addObjectToScene('cube', new Cube(), mainScene);
   addEventListeners();
+
+  document.getElementById('rootThreeApp').appendChild(renderer.domElement);
 
   const render = () => {
     requestAnimationFrame(render);
 
-    renderLoopBody(threeObjects, threeState);
+    renderLoopBody();
 
     renderer.render(mainScene, camera);
   };
 
   render();
-
   threeAppIsReady();
 };
