@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import ObjectSettingsPanel from './components/ObjectSettingsPanel/ObjectSettingsPanel';
-import ThreeApp from './threeApp/ThreeApp';
+import ColorPicker from './components/colorPicker/ColorPicker';
+import ObjectRotation from './components/objectRotation/ObjectRotation';
+import Container from './styledComponents/Container';
+import { initThreeApp } from './threeApp/ThreeApp';
 import GlobalStyles from './globalStyles';
 import Block from './styledComponents/Block';
 
@@ -10,7 +12,7 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    ThreeApp.init(this.threeAppIsLoaded);
+    initThreeApp(this.threeAppIsLoaded);
   }
 
   threeAppIsLoaded = () => {
@@ -28,9 +30,10 @@ export default class App extends Component {
           id="rootThreeApp"
         />
         {threeAppLoaded && (
-          <ObjectSettingsPanel
-            threeApp={ThreeApp}
-          />
+          <Container>
+            <ObjectRotation />
+            <ColorPicker />
+          </Container>
         )}
       </>
     );
