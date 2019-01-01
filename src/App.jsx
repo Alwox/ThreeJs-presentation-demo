@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Header from './components/Header';
-import ObjectSettingsPanel from './components/ObjectSettingsPanel/ObjectSettingsPanel';
-import ThreeApp from './threeApp/ThreeApp';
+import ColorPicker from './components/colorPicker/ColorPicker';
+import ObjectRotation from './components/objectRotation/ObjectRotation';
+import Container from './styledComponents/Container';
+import initThreeApp from './threeApp/initThreeApp';
 import GlobalStyles from './globalStyles';
-import Flex from './styledComponents/Flex';
 import Block from './styledComponents/Block';
 
 export default class App extends Component {
@@ -12,7 +12,7 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    ThreeApp.init(this.threeAppIsLoaded);
+    initThreeApp(this.threeAppIsLoaded);
   }
 
   threeAppIsLoaded = () => {
@@ -26,18 +26,15 @@ export default class App extends Component {
     return (
       <>
         <GlobalStyles />
-        <Header />
-        <Flex>
-          <Block
-            id="rootThreeApp"
-            marginRight={1}
-          />
-          {threeAppLoaded && (
-            <ObjectSettingsPanel
-              threeApp={ThreeApp}
-            />
-          )}
-        </Flex>
+        <Block
+          id="rootThreeApp"
+        />
+        {threeAppLoaded && (
+          <Container>
+            <ObjectRotation />
+            <ColorPicker />
+          </Container>
+        )}
       </>
     );
   }

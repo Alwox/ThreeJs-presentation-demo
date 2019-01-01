@@ -10,5 +10,7 @@ module.exports = {
     'react/destructuring-assignment': 'off',
     'react/prop-types': 'warn',
     'semi' : 'warn',
+    'no-unused-vars' : 'warn',
+    'react/forbid-prop-types' : 'off',
   }
 };

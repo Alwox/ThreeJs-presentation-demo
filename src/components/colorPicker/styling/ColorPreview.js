@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { borderRadius } from '../../../../styledComponents/styleVariables';
+import { borderRadius } from '../../../styledComponents/styleVariables';
 
 const ColorPreview = styled.div`
   width: 30px;
